@@ -30,6 +30,8 @@ var mime = require('mime');
 var async = require('async');
 var color = require('cli-color');
 
+AV.serverURL = 'https://avoscloud.us';
+
 //set qiniu timeout
 qiniu.conf.RPC_TIMEOUT = 3600000;
 
@@ -404,7 +406,7 @@ function sendStats(cmd) {
                 }
             }
         };
-        util.ajax('POST', 'https://cn.avoscloud.com/1/stats/collect', JSON.stringify(data), function(resp) {}, function(err) {}, 'lu348f5799fc5u3eujpzn23acmxy761kq6soyovjc3k6kwrs', 'nrit4mhmqzm1euc3n3k9fv3w0wo72v1bdic6tfrl2usxix3e');
+        util.ajax('POST', 'https://avoscloud.us/1/stats/collect', JSON.stringify(data), function(resp) {}, function(err) {}, 'lu348f5799fc5u3eujpzn23acmxy761kq6soyovjc3k6kwrs', 'nrit4mhmqzm1euc3n3k9fv3w0wo72v1bdic6tfrl2usxix3e');
     } catch (err) {
         //ignore
     }
@@ -753,7 +755,7 @@ if (!CMD) {
                 process.exit(1);
             }
             program.args.shift();
-            exec('open https://cn.avoscloud.com/search.html?q=' + encodeURIComponent(program.args.join(' ')));
+            exec('open https://avoscloud.us/search.html?q=' + encodeURIComponent(program.args.join(' ')));
             break;
         case "deploy":
             initAVOSCloudSDK();
